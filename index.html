@@ -12,9 +12,9 @@
 
 		<script>
 
-var local_ship_position = 5;
+var pressnumber = 0;
 var is_active = true;
-var mykey = "mykey"
+var kennyskey = "kennyskey"
 
 $(document).ready(function() {
 
@@ -22,7 +22,7 @@ $(document).ready(function() {
 		$.ajax({
 			url:"https://codingthecrowd.com/counter.php",
 			dataType: "jsonp",
-			data: {key: mykey, data: local_ship_position},
+			data: {key: kennyskey, data: pressnumber},
 		})
       .done(function(json) {
 
@@ -68,7 +68,8 @@ var myObstacles = [];
 var myScore;
 
 function startGame() {
-    myGamePiece = new component(30, 30, "red", 10, 120);
+    myGamePiece = document.getElementById("http://codingthecrowd.com/aliens.gif").getAttribute('src');
+    // new component(30, 30, "red", 10, 120);
     myGamePiece.gravity = 0.09;
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
     myGameArea.start();
@@ -179,13 +180,14 @@ function everyinterval(n) {
 
 function accelerate(n) {
     myGamePiece.gravity = n;
+    pressnumber += 1;
 }
 
 $("#mturk_form").submit()
 
 </script>
 <br>
-<button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">Fly!</button>
+<button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.03)">Fly!</button>
 <p>Welcome to Kinda-Like-Flappy-Bird</p>
 <p>Use the Fly! button to stay in the air</p>
 
