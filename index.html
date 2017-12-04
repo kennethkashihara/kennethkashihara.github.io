@@ -68,8 +68,9 @@ var myObstacles = [];
 var myScore;
 
 function startGame() {
-    myGamePiece = document.getElementById("http://codingthecrowd.com/aliens.gif").getAttribute('src');
-    // new component(30, 30, "red", 10, 120);
+    myGamePiece = new component(30, 30, "red", 10, 120);
+    //document.getElementById("http://codingthecrowd.com/aliens.gif").get
+    //
     myGamePiece.gravity = 0.09;
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
     myGameArea.start();
