@@ -1,6 +1,52 @@
 <!DOCTYPE html>
 
 <html>
+
+<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+		<script>
+
+var local_ship_position = 5;
+var is_active = true;
+var mykey = "mykey"
+
+$(document).ready(function() {
+
+	$("#getjson").click(function() {
+		$.ajax({
+			url:"https://codingthecrowd.com/counter.php",
+			dataType: "jsonp",
+			data: {key: mykey, data: local_ship_position},
+		})
+      .done(function(json) {
+
+      	console.log(json["time"] % 12)
+
+      	var allinputs = json["results"];
+      	for(var i=0; i<allinputs.length; i++) {
+      		console.log(allinputs[i]["sid"]);
+      	}
+
+       })
+      .fail(function(jqxhr, textStatus, error) {
+          var err = textStatus + ", " + error;
+          console.log( "Request Failed: " + err );
+	  });
+	})
+
+})
+
+
+		</script>
+
+	</head>
+
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
@@ -16,7 +62,6 @@ canvas {
 
 <script>
 
-// modified from https://www.w3schools.com/graphics/game_intro.asp
 
 var myGamePiece;
 var myObstacles = [];
